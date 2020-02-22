@@ -1,13 +1,14 @@
 ### Aliddns-java-client 阿里动态域名解析客户端
 ---
-开发环境：IntellJ IDEA 2019.2 + Jdk 1.8 + maven
-版本：1.0.1
-作者：ruixiaozi
-Github地址：https://github.com/ruixiaozi/aliddns-java-client
-博客：https://www.ruixiaozi.com
-邮箱：admin@ruixiaozi.com
+开发环境：IntellJ IDEA 2019.2 + Jdk 1.8 + maven  
+版本：1.0.1  
+作者：ruixiaozi  
+Github地址：https://github.com/ruixiaozi/aliddns-java-client  
+博客：https://www.ruixiaozi.com  
+邮箱：admin@ruixiaozi.com  
 
 1. 功能介绍  
+
 + 实现阿里云DNS的动态解析
 + 支持IPv4/IPv6
 + 一键安装包只支持Centos 7+/Ubuntu 16+ （其他发行版未测试）
