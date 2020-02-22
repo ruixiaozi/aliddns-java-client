@@ -27,15 +27,16 @@ public class App
         Reader reader = null;
         try {
             //调试的文件路径
-            String path = App.class.getResource("/").toString().substring(6)+"/aliddns.conf";
-            reader = new InputStreamReader(new FileInputStream(path),"UTF-8");
+            //String path = App.class.getResource("/").toString().substring(6)+"/aliddns.conf";
+            //reader = new InputStreamReader(new FileInputStream(path),"UTF-8");
             //正式版本使用标准输入
-            //reader = new InputStreamReader(System.in,"UTF-8");
+            reader = new InputStreamReader(System.in,"UTF-8");
         } catch (UnsupportedEncodingException e) {
             logger.error("Error:don't suppert UTF-8!");
-        } catch (FileNotFoundException e) {
-            logger.error("Error:conf file does not find!");
         }
+        /*catch (FileNotFoundException e) {
+            logger.error("Error:conf file does not find!");
+        }*/
 
         //读取配置文件
         Conf conf = new Gson().fromJson(reader, Conf.class);

@@ -1,0 +1,15 @@
+[Unit]
+Description=alidns-java-client server daemon
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/aliddns/java -jar /usr/local/aliddns/aliddns.jar
+Restart=1
+KillMode=process
+RestartSec=1s
+StandardInput=file:/etc/aliddns/aliddns.conf
+StandardOutput=syslog
+
+[Install]
+WantedBy=multi-user.target
