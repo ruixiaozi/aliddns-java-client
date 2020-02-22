@@ -4,6 +4,7 @@ import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
@@ -19,6 +20,8 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class NetWorkUtils {
 
@@ -40,6 +43,42 @@ public class NetWorkUtils {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+
+        return result;
+    }
+
+    public static String httpGet(String url){
+        String result = "";
+        try(CloseableHttpClient httpClient = HttpClients.createDefault()){
+            HttpGet httpGet = new HttpGet(url);
+
+            try(CloseableHttpResponse response = httpClient.execute(httpGet)){
+                HttpEntity entity = response.getEntity();
+                result = EntityUtils.toString(entity,"UTF-8");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
+
+    public static String getPublicIPv4Address(){
+        String result = "127.0.0.1";
+        String getRe = httpGet("http://checkip.dyndns.com/");
+        //ip地址正则
+        String pattern = "\\d+\\.\\d+\\.\\d+\\.\\d+";
+
+        // 创建 Pattern 对象
+        Pattern r = Pattern.compile(pattern);
+
+        // 现在创建 matcher 对象
+        Matcher m = r.matcher(getRe);
+
+        if(m.find()){
+            result = m.group();
         }
 
         return result;
