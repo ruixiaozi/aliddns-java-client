@@ -6,6 +6,17 @@ import java.io.Serializable;
 
 public class Conf implements Serializable {
 
+    @Override
+    public String toString() {
+        return "Conf{" +
+                "accessKeyId='" + accessKeyId + '\'' +
+                ", accessKeySecret='" + accessKeySecret + '\'' +
+                ", domainName='" + domainName + '\'' +
+                ", host='" + host + '\'' +
+                ", isIpv6=" + isIpv6 +
+                '}';
+    }
+
     /**
      * accessKeyId :
      * accessKeySecret  :
@@ -14,9 +25,10 @@ public class Conf implements Serializable {
      * isIpv6 : true
      */
 
+
     @SerializedName("accessKeyId")
     private String accessKeyId;
-    @SerializedName("accessKeySecret ")
+    @SerializedName("accessKeySecret")
     private String accessKeySecret;
     @SerializedName("domainName")
     private String domainName;

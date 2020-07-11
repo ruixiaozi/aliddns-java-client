@@ -4,11 +4,10 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/local/aliddns/java -jar /usr/local/aliddns/aliddns.jar
+ExecStart=/usr/local/aliddns/java -jar /usr/local/aliddns/aliddns.jar '/etc/aliddns/aliddns.conf'
 Restart=1
 KillMode=process
 RestartSec=1s
-StandardInput=file:/etc/aliddns/aliddns.conf
 StandardOutput=syslog
 
 [Install]

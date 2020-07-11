@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 import java.io.*;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 /**
@@ -24,23 +25,30 @@ public class App
 
     public static void main( String[] args )
     {
+        if(args.length<1){
+            logger.error("don't find conf!");
+            System.exit(-1);
+        }
+
+
         Reader reader = null;
         try {
-            //调试的文件路径
-            //String path = App.class.getResource("/").toString().substring(6)+"/aliddns.conf";
-            //reader = new InputStreamReader(new FileInputStream(path),"UTF-8");
-            //正式版本使用标准输入
-            reader = new InputStreamReader(System.in,"UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            logger.error("Error:don't suppert UTF-8!");
+            reader = new FileReader(args[0]);
+        } catch (FileNotFoundException e) {
+            logger.error("Error:don't open file!"+e.getMessage());
         }
-        /*catch (FileNotFoundException e) {
-            logger.error("Error:conf file does not find!");
-        }*/
+
+
 
         //读取配置文件
-        Conf conf = new Gson().fromJson(reader, Conf.class);
-        logger.info("Success:readConfig");
+        Conf conf = null;
+        try {
+            conf = new Gson().fromJson(reader, Conf.class);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        logger.info("Success:readConfig  "+ Objects.toString(conf,"null"));
         logger.info("accessKeyId:"+conf.getAccessKeyId());
         char[] hiddenstr = new char[conf.getAccessKeySecret().length()];
         Arrays.fill(hiddenstr,'*');

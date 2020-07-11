@@ -1,7 +1,7 @@
 ### Aliddns-java-client 阿里动态域名解析客户端
 ---
 开发环境：IntellJ IDEA 2019.2 + Jdk 1.8 + maven  
-版本：1.0.1  
+版本：1.1.0
 作者：ruixiaozi  
 Github地址：https://github.com/ruixiaozi/aliddns-java-client  
 博客：https://www.ruixiaozi.com  
@@ -24,7 +24,7 @@ Github地址：https://github.com/ruixiaozi/aliddns-java-client
 ```
 {
     "accessKeyId":"你的accessKeyId",
-    "accessKeySecret ":""你的accessKeySecret ",
+    "accessKeySecret":""你的accessKeySecret ",
     "domainName":"你的域名",
     "host":"主机名",
     "isIpv6":true		##true表示用ipv6，false表示用ipv4
